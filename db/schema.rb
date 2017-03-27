@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327150126) do
+ActiveRecord::Schema.define(version: 20170327154009) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20170327150126) do
     t.datetime "updated_at",               null: false
     t.string   "attachment",   limit: 255
     t.string   "email",        limit: 255
+    t.string   "image",        limit: 255
   end
 
   create_table "users", force: :cascade do |t|
