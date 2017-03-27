@@ -1,0 +1,23 @@
+<h1>Listing event</h1>
+<table width='100%'>
+<tr>
+<th>Name</th>
+<th>Guests</th>
+<th>Chairs</th>
+<th>Performances</th>
+</tr>
+<% @events.each do |event| %>
+ <tr>
+ <td><%= event.name %></td>
+ <td><%= event.guests %></td>
+ <td><%= event.chairs %></td>
+ <td><%= event.performances %></td>
+ <td><%= link_to 'show', event_path(event) %></td>
+ <td><%= link_to 'edit', edit_event_path(event) %></td>
+ <td><%= link_to "Download Resume", event.attachment_url %></td>
+ <td><%= link_to 'destroy', event_path(event),
+        :method => :delete, data: { clear: 'Are you sure?' }%></td>
+</tr>
+<% end %>
+</table>
+<%= link_to 'new event', new_event_path %>
