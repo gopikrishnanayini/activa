@@ -9,8 +9,9 @@ class EventsController < ApplicationController
   	@event = Event.new(event_params)
   	respond_to do |format|
   		if @event.save
+        ExampleMailer.sample_email(@event).deliver
   			format.html { redirect_to @event, notice:'Event was successfully created.' }
-  			format.json { render json: @event, :status => :Created, location: @event }
+  			format.json { render json: @event, :status => :created, location: @event }
   		else
 
   			format.html { render action: 'new' }
@@ -44,7 +45,7 @@ class EventsController < ApplicationController
   end
   private
   def event_params
-  	params.require(:event).permit(:name, :guests, :chairs, :performances, :attachment)
+  	params.require(:event).permit(:name, :guests, :chairs, :performances, :attachment, :email)
   end
 
 end
